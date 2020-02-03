@@ -1,14 +1,18 @@
-import React from 'react'
-import Book from './Book'
+import React from 'react';
+import Book from './Book';
 
 function Booklist(props) {
+  const list = props.list.map(book => (
+    <Book book={book}/>
+  ));
+
   return (
     <div>
       <ul>
-      <Book list={props.list}/>
+      {list}
       </ul>
     </div>
-  )
+  );
 }
 
-export default Booklist
+export default Booklist;

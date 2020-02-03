@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
 
 function Book(props) {
   return (
-    <div>
-      <h2>Book</h2>
-      <img src={props.url} alt="test" />
-  <p>Author: {props.author}</p>
-  <p>Price: {props.price}</p>
-      <p>{props.description}</p>
-    </div>
-  )
+    <li>
+    {props.book.volumeInfo.title}
+    <br></br>
+    {props.book.volumeInfo.authors[0]}
+    <br></br>
+    {props.book.volumeInfo.description}
+    <br></br>
+  </li>
+  );
 }
 
-export default Book
+export default Book;
