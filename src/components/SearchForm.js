@@ -9,8 +9,13 @@ function SearchForm(props) {
         <button type="submit" onClick={props.getBooklist}>Search</button>
         
         <label htmlFor="print-type">Print Type:</label>
-        <select name="print-type" id="print-type">
+        <select name="print-type" id="print-type" value={props.filter} onChange={props.printFilter}>
           <option value="all">All</option>
+          <option value="ebooks">E-books</option>
+          <option value="free-ebooks">Free E-books</option>
+          <option value="full">Full</option>
+          <option value="paid-ebooks">Paid E-books</option>
+          <option value="partial">Partial</option>
         </select>
 
         <label htmlFor="book-type">Book Type:</label>

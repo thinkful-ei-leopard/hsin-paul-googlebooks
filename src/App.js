@@ -12,22 +12,27 @@ export class App extends Component {
       loading: false,
       list: [],
       error: null,
-      booktitle:""
+      booktitle: '',
+      filter: null
     };
   }
 
-  searchBook = (event)=> {
+  searchBook = event => {
     this.setState({
       booktitle: event.target.value
-    })
-  }
+    });
+  };
 
-  getBooklist = (event) => {
+  printFilter = event => {
+    this.setState({
+      filter: event.target.value.toUpperCase()
+    });
+  };
+
+  getBooklist = event => {
     event.preventDefault();
-    const {booktitle} = this.state;
-    const bookUrl =
-     `https://www.googleapis.com/books/v1/volumes?q=${booktitle}`;
-
+    const { booktitle } = this.state;
+    const bookUrl = `https://www.googleapis.com/books/v1/volumes?q=${booktitle}`;
 
     fetch(bookUrl)
       .then(res => {
@@ -41,7 +46,7 @@ export class App extends Component {
       .catch(error => this.setState({ error, loading: false }));
 
     console.log(this.state);
-  }
+  };
 
   render() {
     if (this.state.error) {
@@ -54,14 +59,16 @@ export class App extends Component {
       <div>
         <Header />
 
-        <SearchForm searchBook={this.searchBook} getBooklist={this.getBooklist} booktitle={this.state.booktitle}/>
-        <BookList list={this.state.list}/>
+        <SearchForm
+          searchBook={this.searchBook}
+          getBooklist={this.getBooklist}
+          booktitle={this.state.booktitle}
+          printFilter={this.printFilter}
+        />
+        <BookList list={this.state.list} filter={this.state.filter} />
       </div>
     );
   }
-
-  }
-
-  
+}
 
 export default App;
