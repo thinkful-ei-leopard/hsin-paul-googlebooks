@@ -11,17 +11,23 @@ export class App extends Component {
     this.state = {
       loading: false,
       list: [],
-      error: null
+      error: null,
+      booktitle:""
     };
   }
 
-  searchBook() {}
+  searchBook = (event)=> {
+    this.setState({
+      booktitle: event.target.value
+    })
+  }
 
-  getBooklist() {}
-
-  componentDidMount() {
+  getBooklist = (event) => {
+    event.preventDefault();
+    const {booktitle} = this.state;
     const bookUrl =
-      "https://www.googleapis.com/books/v1/volumes?q='mockingbird'";
+     `https://www.googleapis.com/books/v1/volumes?q=${booktitle}`;
+
 
     fetch(bookUrl)
       .then(res => {
@@ -47,11 +53,15 @@ export class App extends Component {
     return (
       <div>
         <Header />
-        <SearchForm />
+
+        <SearchForm searchBook={this.searchBook} getBooklist={this.getBooklist} booktitle={this.state.booktitle}/>
         <BookList list={this.state.list}/>
       </div>
     );
   }
-}
+
+  }
+
+  
 
 export default App;

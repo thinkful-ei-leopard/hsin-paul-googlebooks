@@ -5,7 +5,7 @@ function SearchForm(props) {
     <div>
       <form >
         <label htmlFor="searchbar">Search:</label>
-        <input type="text" value={props.title}/>
+        <input type="text" onChange={props.searchBook} value={props.booktitle}/>
         <button type="submit" onClick={props.getBooklist}>Search</button>
         
         <label htmlFor="print-type">Print Type:</label>
