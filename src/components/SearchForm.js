@@ -1,12 +1,12 @@
 import React from 'react'
 
-function SearchForm() {
+function SearchForm(props) {
   return (
     <div>
-      <form action="">
+      <form >
         <label htmlFor="searchbar">Search:</label>
-        <input type="text" value=""/>
-        <button type="submit">Search</button>
+        <input type="text" value={props.title}/>
+        <button type="submit" onClick={props.getBooklist}>Search</button>
         
         <label htmlFor="print-type">Print Type:</label>
         <select name="print-type" id="print-type">

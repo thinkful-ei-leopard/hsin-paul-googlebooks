@@ -1,11 +1,11 @@
 import React from 'react'
 import Book from './Book'
 
-function Booklist() {
+function Booklist(props) {
   return (
     <div>
       <ul>
-      <Book />
+      <Book list={props.list}/>
       </ul>
     </div>
   )
