@@ -12,7 +12,8 @@ function Book(props) {
     <br></br>
     Price: {amount}
     <br></br>
-    {props.book.volumeInfo.description}
+    {props.book.searchInfo ? props.book.searchInfo.textSnippet : props.book.volumeInfo.description }
+
     <br></br>
   </li>
   );
